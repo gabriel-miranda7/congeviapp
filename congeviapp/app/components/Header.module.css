@@ -1,24 +1,29 @@
 .header {
   background-color: rgb(var(--header-rgb));
   display: flex;
+  height: 9vh;
   justify-content: center;
   align-items: center;
   padding: 30px 20px;
   width: 100vw;
 }
 
-.navi {
+.headerElementos{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+}
+
+.navi {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
 }
 
 .logo {
-  position: absolute;
-  left: 0;
   height: 70px;
-  margin-left: 20px;
 }
 
 .navList {
@@ -33,62 +38,105 @@
 .navItem {
   margin: 0 10px;
   color: rgb(var(--navitems-rgb));
-  transition: color 0.2s, scale 0.2s;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .navItem:hover {
   color: #3799ee; 
-  scale: 1.12;
+  transform: scale(1.12);
 }
 
 .placeholder {
-  position: absolute;
-  right: 0;
-  top: 14px;
-  height: 50px;
-  margin-right: 20px;
   cursor: pointer;
+  height: 50px;
 }
 
 .toggledark{
-  position: absolute;
-  right: 115px;
-  top: 25px;
-  width: 30px;
-  height: auto;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   opacity: 0.7;
 }
 
-@media (max-width: 700px){
-  .toggledark{
-    visibility: hidden;
-  }
+.menuButton{
+  display: none;
 }
 
-@media (max-width: 500px) {
-  .navi {
+@media (max-width: 700px) {
+
+  .navList{
+    background-color: rgb(var(--header-rgb));
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    text-align: center;
+    padding-top: 80px;
+    z-index: 998;
+    display: flex;
     flex-direction: column;
+    transition: all 0.4s ease;
+  }
+ 
+  .active{
+    left: -25%;
   }
 
-  .logo {
-    position: initial;
-    margin: 0 auto 20px;
+
+  .navItem{
+    display: inline-block;
+    margin: 9vw 0;
+    font-size: 22px;
+    
   }
 
-  .navList {
-    flex-direction: row;
+  .menuButton{
+    display: inherit;
+    z-index: 999;
+    position: relative;
+    left: -20px;
+    border: 0;
+    background-color: transparent;
   }
 
-  .navItem {
-    margin: 10px;
+  .menuIcon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
   }
+
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #000; 
+    margin: 5px 0;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  
+  .open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+
+  .headerElementos{
+    justify-content: space-evenly;
+    width: 100vw;
+  }
+
 
   .placeholder {
-    position: absolute;
-    right: 5px;
-    top: 40px;
-    height: 50px;
+    height: 40px;
     margin-right: 20px;
   }
 
